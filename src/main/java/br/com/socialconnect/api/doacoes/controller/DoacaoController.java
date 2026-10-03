@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -49,7 +48,7 @@ public class DoacaoController {
 
             @Parameter(description = "Tipo da doação (ALIMENTO, ROUPA, FINANCEIRA)", example = "ALIMENTO")
             @RequestParam(required = false) TipoDoacao tipo,
-            @ParameterObject
+
             @PageableDefault(size = 20, sort = "dataDoacao") Pageable pageable) {
         return ResponseEntity.ok(service.listar(dataInicio, dataFim, tipo, pageable));
     }
